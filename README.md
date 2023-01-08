@@ -1,23 +1,38 @@
-React-Webkit-Template
+# React-Webkit-Template
 
-Webkit Set Up
+## Babel Set Up
 
+Use npm to install the necessary react babel packages
+
+```bash
 npm init -y
 npm install react react-dom
 npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader
+```
 
 Create .babelrc and add the following code:
+
+```json
 {  
     "presets": [
         "@babel/preset-react",
         "@babel/preset-env"
     ]
 }
+```
 
+## Webkit Setup
+
+Use npm to install the necessary webpack packages
+
+```bash
 npm install --save-dev webpack webpack-cli webpack-dev-server
 npm install --save-dev html-webpack-plugin style-loader css-loader file-loader
+```
 
 Create weback.config.js and add the following code:
+
+```javascript
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
@@ -54,9 +69,11 @@ module.exports = {
         ],
     },
 };
+```
 
-Create src folder
-Create src/App.js file and add the following code:
+Create a folder called src. Inside the src folder create an App.js file and add the following code:
+
+```javascript
 import React from "react";
 
 const App = () => (
@@ -66,16 +83,21 @@ const App = () => (
 );
 
 export default App;
+```
 
-Create src/index.js and add the following code:
+Inside the src folder create an index.js (this will be the entrypoint of the application) and add the following code:
+
+```javascript
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
 ReactDOM.render(<App/>,document.querySelector("#root"));
+```
 
-Create src/index.html and add the following code:
+Inside the src folder create an index.html file and add the following code:
 
+```html
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -87,20 +109,30 @@ Create src/index.html and add the following code:
         <div id="root"></div>
     </body>
 </html>
+```
 
 In package.json add the following scripts:
+
+```json
 "scripts": {
     "start": "webpack serve  --hot --open",
     "build": "webpack --config webpack.config.js --mode production"
 }
+```
 
-Linter & Prettier Setup
+## Linter & Prettier Setup
 
+Use npm to install the necessary eslint, prettier, and precise=commits packages
+
+```bash
 npm install eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node @babel/eslint-parser --save-dev
 npx install-peerdeps --dev eslint-config-airbnb
 npm install precise-commits --save-dev
+```
 
 Create .prettierrc and add the following code:
+
+```json
 {
     "trailingComma": "es5",
     "tabWidth": 4,
@@ -108,8 +140,11 @@ Create .prettierrc and add the following code:
     "singleQuote": true,
     "endOfLine": "auto"
 }
+```
 
 Create .prettierignore and add the following:
+
+```yml
 # README
 README.md 
 
@@ -119,8 +154,11 @@ package-lock.json
 
 # HTML files
 *.html
+```
 
 Create .eslintrc.js and add the following code:
+
+```javascript
 module.exports = {
     extends: ['airbnb', 'prettier', 'plugin:node/recommended'],
     plugins: ['prettier'],
@@ -156,16 +194,22 @@ module.exports = {
         'react/propTypes': 0,
     },
 };
+```
 
 In package.json add the following scripts:
+
+```json
 "scripts": {
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "precise-commits": "precise-commits",
     "lint-staged": "lint-staged",
     "lint-prepush": "lint-prepush",
 }
+```
 
 Create .eslintignore and add the following:
+
+```yml
 # Node modules
 node_modules
 
@@ -175,10 +219,19 @@ build
 
 # Env files
 *.env
+```
 
+## Husky Pre-Commit & Pre-Push Hooks Setup
+
+Use npm to install the necessary husky packages
+
+```bash
 npm install husky lint-staged lint-prepush --save-dev
+```
 
 In package.json add the following:
+
+```json
 "lint-staged": {
     "**/*.{js,jsx}": [
         "npm run lint",
@@ -193,17 +246,28 @@ In package.json add the following:
         ]
     }
 }
+```
 
+Use npx to initialize husky and create the necessary config files
+
+```bash
 npx husky-init
+```
 
 Change .husky/pre-commit to the following:
+
+```yml
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
 npm run precise-commits && npm run format && npm run lint-staged
+```
 
 Create .husky/pre-push and add the following:
+
+```yml
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
 npm run lint-prepush
+```
