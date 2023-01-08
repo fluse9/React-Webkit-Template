@@ -105,7 +105,8 @@ Create .prettierrc and add the following code:
     "trailingComma": "es5",
     "tabWidth": 4,
     "semi": true,
-    "singleQuote": true
+    "singleQuote": true,
+    "endOfLine": "auto"
 }
 
 Create .prettierignore and add the following:
