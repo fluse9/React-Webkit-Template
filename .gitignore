@@ -1,0 +1,6 @@
+# Node modules and packages
+node_modules
+package-lock.json
+
+# Build folder and artifcats
+build

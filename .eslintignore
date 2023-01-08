@@ -1,0 +1,9 @@
+# Node modules
+node_modules
+
+# Artifacts
+public
+build
+
+# Env files
+*.env

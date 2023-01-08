@@ -1,0 +1,61 @@
+{
+    "name": "react-webkit-template",
+    "version": "0.0.1",
+    "description": "react app template using webkit",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "webpack serve  --hot --open",
+        "build": "webpack --config webpack.config.js --mode production",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+        "precise-commits": "precise-commits",
+        "lint-staged": "lint-staged",
+        "lint-prepush": "lint-prepush"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.20.12",
+        "@babel/eslint-parser": "^7.19.1",
+        "@babel/preset-env": "^7.20.2",
+        "@babel/preset-react": "^7.18.6",
+        "babel-loader": "^9.1.2",
+        "css-loader": "^6.7.3",
+        "eslint": "^8.31.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-node": "^4.1.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-jsx-a11y": "^6.6.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-react": "^7.31.11",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^5.5.0",
+        "lint-prepush": "^2.2.1",
+        "lint-staged": "^13.1.0",
+        "precise-commits": "^1.0.2",
+        "prettier": "^2.8.2",
+        "style-loader": "^3.3.1",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1",
+        "webpack-dev-server": "^4.11.1"
+    },
+    "lint-staged": {
+        "**/*.{js,jsx}": [
+            "eslint"
+        ]
+    },
+    "lint-prepush": {
+        "base": "develop",
+        "tasks": {
+            "**/*.{js,jsx,ts,tsx}": [
+                "eslint"
+            ]
+        }
+    }
+}

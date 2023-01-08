@@ -1,0 +1,9 @@
+# README
+README.md 
+
+# Node modules and packages
+node_modules
+package-lock.json
+
+# HTML files
+*.html
